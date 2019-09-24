@@ -1,0 +1,50 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb",
+    "airbnb/hooks"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "legacyDecorators": true
+    },
+    "ecmaVersion": 2019,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "markdown"
+  ],
+  "rules": {
+    "import/prefer-default-export": "off",
+    "jsx-a11y/alt-text": "off",
+    "jsx-a11y/anchor-has-content": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/control-has-associated-label": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "no-console": "error",
+    "no-constant-condition": ["error", { "checkLoops": false }],
+    "object-curly-newline": "off",
+    "operator-linebreak": [
+      "error",
+      "after",
+      { "overrides": { "=": "none", "?": "before", ":": "before" } }
+    ],
+    "react/jsx-filename-extension": ["error", { "extensions": [".jsx", ".md"] }],
+    "react/state-in-constructor": ["error", "never"],
+    "react/static-property-placement": ["error", "static public field"]
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "config/webpack.config.default.js"
+      }
+    }
+  }
+}

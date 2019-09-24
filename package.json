@@ -1,0 +1,105 @@
+{
+  "name": "react-hooks-versus-redux-samples",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "start": "webpack-dev-server --config config/webpack.config.dev.js",
+    "build": "webpack --config config/webpack.config.prod.js",
+    "analyze": "webpack --config config/webpack.config.analyzer.js",
+    "lint": "npm run lint:es && npm run lint:md && npm run lint:style",
+    "lint:es": "eslint . --ext .js,.jsx",
+    "lint:md": "eslint . --ext .md",
+    "lint:style": "stylelint 'src/**/*.scss' --syntax scss",
+    "lint-fix": "npm run lint-fix:es && npm run lint-fix:md && npm run lint-fix:style",
+    "lint-fix:es": "npm run lint:es -- --fix",
+    "lint-fix:md": "npm run lint:md -- --fix",
+    "lint-fix:style": "npm run lint:style -- --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicolasSchwarzer/react-hooks-versus-redux-samples.git"
+  },
+  "author": "Nicolas Wan <nbwansjtu@gmail.com> (https://github.com/NicolasSchwarzer)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NicolasSchwarzer/react-hooks-versus-redux-samples/issues"
+  },
+  "homepage": "https://github.com/NicolasSchwarzer/react-hooks-versus-redux-samples#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.5.5",
+    "antd": "^3.21.4",
+    "classnames": "^2.2.6",
+    "core-js": "^3.2.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-router-dom": "^5.0.1",
+    "regenerator-runtime": "^0.13.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/plugin-transform-react-jsx-source": "^7.5.0",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "autoprefixer": "^9.6.1",
+    "babel-eslint": "^10.0.2",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-import": "^1.12.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^18.0.0",
+    "eslint-import-resolver-webpack": "^0.11.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-markdown": "^1.0.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.0.3",
+    "lint-staged": "^9.2.1",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.2.0",
+    "stylelint": "^10.1.0",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.1.0",
+    "stylelint-order": "^3.0.1",
+    "terser-webpack-plugin": "^2.1.0",
+    "url-loader": "^2.1.0",
+    "webpack": "^4.39.1",
+    "webpack-bundle-analyzer": "^3.5.0",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.8.0",
+    "webpack-merge": "^4.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "npm run lint-fix:es",
+      "git add"
+    ],
+    "*.md": [
+      "npm run lint-fix:md",
+      "git add"
+    ],
+    "*.scss": [
+      "npm run lint-fix:style",
+      "git add"
+    ]
+  }
+}
