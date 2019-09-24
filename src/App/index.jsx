@@ -3,7 +3,7 @@ import { Switch, Redirect, Route } from 'react-router-dom';
 import Panel from '@/layouts/Panel';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import ImportSpin from '@/components/ImportSpin';
-import NotFound from '@/pages/NotFound';
+import NotFound from '@/samples/NotFound';
 import './index.scss';
 
 /**
@@ -14,7 +14,7 @@ import './index.scss';
  *
  * Use webpackChunkName to persist splitted (non-entry) chunk file name.
  */
-const Dashboard = lazy(() => import(/* webpackChunkName: "dashboard" */ '@/pages/Dashboard'));
+const Dashboard = lazy(() => import(/* webpackChunkName: "dashboard" */ '@/samples/Dashboard'));
 
 function App() {
   return (
