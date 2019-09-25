@@ -1,8 +1,6 @@
 import React, { memo, useEffect } from 'react';
-import { useReducer } from '@/hooks';
+import { useReducer, usePrevious } from '@/hooks';
 import styles from './index.scss';
-
-const initialState = { count: 0 };
 
 function reducer(state, action) {
   switch (action.type) {
@@ -14,7 +12,11 @@ function reducer(state, action) {
 }
 
 function Dashboard() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  // Use function as initial state to avoid duplicate state creation,
+  // especially usefull for performance optimization in expensive state creation,
+  // https://reactjs.org/docs/hooks-faq.html#how-to-create-expensive-objects-lazily
+  const [{ count }, dispatch] = useReducer(reducer, () => ({ count: 0 }));
+  const prevCount = usePrevious(count);
   useEffect(() => {
     const intervalId = setInterval(() => dispatch({ type: 'increase' }), 1000);
     return () => clearInterval(intervalId);
@@ -22,8 +24,12 @@ function Dashboard() {
   return (
     <div className={styles.container}>
       Count
-      {' '}
-      {state.count}
+      {': '}
+      {count}
+      {'; '}
+      Previous Count
+      {': '}
+      {prevCount}
     </div>
   );
 }
